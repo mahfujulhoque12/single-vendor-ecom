@@ -7,11 +7,11 @@ import SecCard from './atom/SecCard'
 
 const Hero = () => {
   return (
-    <section className='py-5 md:py-10'>
-        <MaxWidthWrapper>
+    <section className='pt-0 pb-5 md:py-10'>
+        <MaxWidthWrapper className='px-0 '>
 
         <div className="flex  gap-4">
-        <div className=" basis-[100%] md:basis-[62%]">
+        <div className=" basis-[100%] md:basis-[62%] p-1.5">
             <Slider/>
         </div>
         <div className=" hidden md:block  md:basis-[38%]">

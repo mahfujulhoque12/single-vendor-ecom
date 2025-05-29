@@ -15,6 +15,8 @@ import image7 from '/public/campaing/cam1.png';
 import image8 from '/public/campaing/cam2.png';
 
 import MaxWidthWrapper from '@/ui/MaxWidthWrapper';
+import { IoMdArrowDropright } from 'react-icons/io';
+import Link from 'next/link';
 
 const products = [
   {
@@ -141,12 +143,17 @@ const products = [
 
 const AllProducts = () => {
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className='px-0 pb-10'>
 
     <div className="my-10 px-2 md:px-4 py-6 bg-white rounded-xl md:shadow-sm">
-      <h2 className="text-xl font-bold text-green-800 mb-6">
-        All Organic Products
-      </h2>
+          <div className=' flex items-center justify-between mb-6'>
+                <h2 className="text-xl font-bold text-green-800 flex  items-center">
+              <IoMdArrowDropright size={28} className='mt-1'/>
+          All  Products
+      
+            </h2>
+            <Link href="/shop" className='flex itmes-center text-base font-normal text-green-800 gap-2 underline'>view all</Link>
+          </div>
       <div className="grid gap-2 sm:gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5">
         {products.map((product) => (
           <div

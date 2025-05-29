@@ -19,7 +19,7 @@ const Header: React.FC = () => {
 
 
   return (
-    <header className="bg-green-50 shadow z-50">
+    <header className="bg-white shadow z-50">
       <MaxWidthWrapper>
         <div className="flex items-center justify-between py-4">
           {/* Mobile Menu Button and icons start */}
