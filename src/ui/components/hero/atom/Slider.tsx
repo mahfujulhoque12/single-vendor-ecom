@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import slider1 from '/public/hero/banner1.jpg';
-import slider2 from '/public/hero/banner2.jpg';
-import slider3 from '/public/hero/banner3.jpg';
+import slider1 from '/public/hero/banner1.png';
+import slider2 from '/public/hero/banner2.png';
+import slider3 from '/public/hero/banner3.png';
 import Image from 'next/image';
 
 type ImageType = {
@@ -74,12 +74,12 @@ const Slider = () => {
       onTouchMove={(e) => handleMove(e.touches[0].clientX)}
       onTouchEnd={handleEnd}
     >
-      <div className="relative w-full h-[300px] md:h-[458px] transition-all duration-500">
+      <div className="relative w-full h-[250px] md:h-[458px] transition-all duration-500">
         <Image
           src={images[currentImage].image}
           alt={`Slide ${images[currentImage].id}`}
           fill
-          className="object-cover"
+          className="object-cover rounded-md"
           priority
         />
       </div>
@@ -90,7 +90,7 @@ const Slider = () => {
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-4 h-4 rounded-full ${
+            className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${
               currentImage === index ? 'bg-green-700' : 'bg-gray-300'
             }`}
           ></button>

@@ -34,12 +34,12 @@ const badges = [
 const Badge = () => {
   return (
     <MaxWidthWrapper>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {/* 2️⃣ Render each badge card from array */}
         {badges.map((badge, index) => (
           <div
             key={index}
-            className="flex bg-white justify-center items-center gap-4 p-4 shadow-md border rounded-md cursor-pointer border-gray-300 hover:shadow-lg transition"
+            className="flex bg-white  flex-col sm:flex-row justify-center items-center gap-4 p-4 sm:shadow-md border rounded-md cursor-pointer border-gray-300  transition"
           >
             <div>{badge.icon}</div>
             <div>
