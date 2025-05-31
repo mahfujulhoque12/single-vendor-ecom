@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import { MdOutlineStarPurple500 } from 'react-icons/md';
 
@@ -18,7 +18,20 @@ import MaxWidthWrapper from '@/ui/MaxWidthWrapper';
 import { IoMdArrowDropright } from 'react-icons/io';
 import Link from 'next/link';
 
-const products = [
+export type Product = {
+  id: number;
+  title: string;
+  img: StaticImageData;
+  rating: number;
+  reviews: number;
+  sold: number;
+  total: number;
+  originalPrice: number;
+  discountedPrice: number;
+  description: string;
+}
+
+export const products: Product[] = [
   {
     id: 1,
     title: 'Organic Fruits',

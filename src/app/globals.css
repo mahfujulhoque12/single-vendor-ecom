@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@media (min-width: 360px) {
+  .grid-cols-xs-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

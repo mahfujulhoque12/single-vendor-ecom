@@ -44,9 +44,9 @@ const Header: React.FC = () => {
 
             {/* mobile right start */}
             <div className="flex items-center justify-center gap-5">
-              <div className="text-green-800 cursor-pointer">
+              <Link href="/search" className="text-green-800 cursor-pointer">
                 <IoMdSearch size={30} />
-              </div>
+              </Link>
               <div className="text-green-800 cursor-pointer relative">
                 <GiShoppingBag size={30} />
                 <span className="bg-green-700 p-1 text-xs font-light rounded-full text-white absolute -top-3 -left-2">
