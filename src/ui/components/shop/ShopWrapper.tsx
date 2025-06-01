@@ -127,10 +127,10 @@ const ShopWrapper = () => {
 
         <div className="flex flex-col lg:flex-row gap-4 mt-5">
           {/* Hamburger Menu for Mobile */}
-          <div className="flex items-center gap-3 justify-between py-2">
+          <div className="flex items-center lg:hidden gap-3 justify-between py-2">
 
           <button
-            className="sticky top-0 left-0 z-20 lg:hidden flex items-center gap-1 text-green-500 text-base font-normal  cursor-pointer   "
+            className="sticky top-0 left-0 z-20  flex items-center gap-1 text-green-500 text-base font-normal  cursor-pointer   "
             onClick={() => setIsDrawerOpen(true)}
           >
             <CiFilter  size={20} />  filter
