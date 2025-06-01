@@ -299,12 +299,12 @@ const DesktopFooter = () => {
         <MaxWidthWrapper>
           <div className="flex flex-col gap-4 lg:flex-row justify-between items-center p-5">
             <div>
-              <p className="text-[#333B4E] dark:text-gray-300 text-base font-medium">
+              <p className="text-gray-200 text-base font-medium">
                 Copyright &copy; all rights reserved. Powered by Grabit.
               </p>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-2">
-              <p className="text-[#333B4E] dark:text-gray-300 flex text-base font-medium">
+              <p className="text-gray-200 flex text-base font-medium">
                 We Are Accepting
               </p>
               <Image

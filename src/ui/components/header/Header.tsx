@@ -32,6 +32,8 @@ const Header: React.FC = () => {
               >
                 <HiMenuAlt1 size={30} />
               </button>
+              <Link href="/">
+
               <Image
                 src={logo}
                 alt="logo"
@@ -39,6 +41,7 @@ const Header: React.FC = () => {
                 height={200}
                 className="h-12 w-20"
               />
+              </Link>
             </div>
             {/* mobile left end */}
 
@@ -47,12 +50,12 @@ const Header: React.FC = () => {
               <Link href="/search" className="text-green-800 cursor-pointer">
                 <IoMdSearch size={30} />
               </Link>
-              <div className="text-green-800 cursor-pointer relative">
+              <Link href="/card" className="text-green-800 cursor-pointer relative">
                 <GiShoppingBag size={30} />
                 <span className="bg-green-700 p-1 text-xs font-light rounded-full text-white absolute -top-3 -left-2">
                   02
                 </span>
-              </div>
+              </Link>
             </div>
             {/* mobile right end */}
           </div>
@@ -173,8 +176,8 @@ const Header: React.FC = () => {
         } md:hidden`}
       >
         <div className="p-4 space-y-4 text-green-900 font-medium">
-          <div className="flex justify-between items-center border-b pb-3">
-            <div>
+          <div className="flex justify-between items-center border-b border-gray-300 pb-3">
+            <Link href="/" onClick={toggleMobileMenu}>
               <Image
                 src={logo}
                 width={200}
@@ -182,7 +185,7 @@ const Header: React.FC = () => {
                 alt="img"
                 className="h-12 w-20"
               />
-            </div>
+            </Link>
             <button className="cursor-pointer" onClick={toggleMobileMenu}>
               <FaTimes size={22} />
             </button>

@@ -11,7 +11,7 @@ const Account = () => {
       </div>
 
       <div>
-        <Link href="#">
+        <Link href="/card">
           <p className="text-gray-900 flex justify-center items-center gap-2">
             Account <FaUserCheck size={20} className="text-gray-900" />
           </p>

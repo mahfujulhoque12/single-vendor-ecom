@@ -147,7 +147,7 @@ const TrendingProducts = () => {
   return (
     <MaxWidthWrapper className='px-0'>
 
-    <div className="mt-10 px-2 sm:px-4 py-6 bg-white rounded-xl shadow-sm">
+    <div className="mt-10 px-2 sm:px-4 py-6 bg-[#FAFAFA] rounded-xl shadow-sm">
     <div className=' flex items-center justify-between mb-6'>
           <h2 className="text-xl font-bold text-green-800 flex  items-center">
         <IoMdArrowDropright size={28} className='mt-1'/>
@@ -161,7 +161,7 @@ const TrendingProducts = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-[#FAFAFA] border border-gray-200 rounded-xl md:shadow-md p-2 sm:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
+            className="bg-white rounded-md   md:shadow-md p-2 sm:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
           >
             <div className="relative w-full h-40 mb-3">
               <Image

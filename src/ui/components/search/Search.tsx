@@ -98,7 +98,7 @@ const Search: React.FC = () => {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-[#FAFAFA] border border-gray-200 rounded-xl md:shadow-md p-2 md:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
+                className="bg-white border border-gray-200 rounded-xl md:shadow-md p-2 md:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
               >
                 <div className="relative w-full h-40 mb-3">
                   <Image

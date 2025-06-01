@@ -1,111 +1,141 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import MaxWidthWrapper from '@/ui/MaxWidthWrapper';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
+import { FaSearch, FaTimes } from 'react-icons/fa';
+import { products as allProducts } from '@/ui/components/all-products/AllProducts';
 import Image from 'next/image';
+import { MdOutlineStarPurple500 } from 'react-icons/md';
 
-// Example static data
-const staticData = [
-  {
-    id: 1,
-    title: 'Natural Honey',
-    image: '/product/product1.png',
-  },
-  {
-    id: 2,
-    title: 'Organic Dates',
-    image: '/product/product2.png',
-  },
-  {
-    id: 3,
-    title: 'Pure Mustard Oil',
-    image: '/product/product3.png',
-  },
-];
 
-const SearchBoxContent = () => {
-  const [input, setInput] = useState('');
-  const [suggestions, setSuggestions] = useState<typeof staticData>([]);
-  const [isSearching, setIsSearching] = useState(false);
 
-  const handleSearch = () => {
-    if (!input.trim()) return;
-    console.log(`Searching for: ${input}`);
-    setSuggestions([]);
-    setIsSearching(false);
-  };
+const Search: React.FC = () => {
+  const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
+  const filteredProducts = allProducts.filter((product) =>
+    product.title.toLowerCase().includes(query.toLowerCase())
+  );
 
+  const topSuggestions = filteredProducts.slice(0, 5);
+
+  // Close suggestions on outside click
   useEffect(() => {
-    if (input.trim()) {
-      setIsSearching(true);
-      const filtered = staticData.filter((item) =>
-        item.title.toLowerCase().includes(input.toLowerCase())
-      );
-      setSuggestions(filtered);
-    } else {
-      setSuggestions([]);
-      setIsSearching(false);
-    }
-  }, [input]);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setIsFocused(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div className="relative">
-      <div className="bg-white rounded-md flex gap-3 items-center justify-center shadow-sm px-4 py-4 w-full">
-        <input
-          className="bg-white text-black border-none focus-visible:ring-0 shadow-none outline-none w-full"
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search Products"
-        />
-        <button onClick={handleSearch} className="text-black">
-          <FaSearch />
-        </button>
-      </div>
+    <MaxWidthWrapper>
+      <div className="">
 
-      {isSearching && input.trim() && suggestions.length === 0 ? (
-        <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-2 z-10 text-center p-4">
-          <p className="text-gray-500">No data found</p>
-        </div>
-      ) : suggestions.length > 0 ? (
-        <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-2 z-10">
-          {suggestions.map((suggestion) => (
-            <div
-              key={suggestion.id}
-              className="px-4 py-2 hover:bg-gray-100 transition-all duration-300 text-gray-800 cursor-pointer"
-              onClick={() => {
-                setInput(suggestion.title);
-                handleSearch();
-              }}
+        {/* Search Box with Suggestions */}
+        <div className="w-full relative" ref={inputRef}>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            placeholder="Search organic honey, seeds, fruits..."
+            className="w-full py-3 pl-12 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 bg-white text-gray-800 placeholder-gray-400"
+          />
+          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+          {query && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500"
+              onClick={() => setQuery('')}
+              aria-label="Clear"
             >
-              <div className="flex items-center justify-between gap-2">
-                <span>{suggestion.title}</span>
-                <Image
-                  src={suggestion.image}
-                  width={60}
-                  height={60}
-                  alt={suggestion.title}
-                  className="rounded object-cover"
-                />
-              </div>
+              <FaTimes size={16} />
+            </button>
+          )}
+
+          {/* Suggestions Dropdown */}
+          {isFocused && topSuggestions.length > 0 && (
+            <div className="absolute top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow z-50">
+              {topSuggestions.map((item) => (
+                <div
+                  key={item.id}           
+                  onClick={() => {
+                    setQuery(item.title);
+                    setIsFocused(false);
+                  }}
+                  className="px-4 py-2 text-sm text-gray-700 hover:bg-green-100 cursor-pointer"
+                >
+                  {item.title}
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
-      ) : null}
-    </div>
+
+        {/* Product Results */}
+        {query && (
+          <div className="grid gap-2 sm:gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-[#FAFAFA] border border-gray-200 rounded-xl md:shadow-md p-2 md:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
+              >
+                <div className="relative w-full h-40 mb-3">
+                  <Image
+                    src={product.img}
+                    alt={product.title}
+                    fill
+                    className="object-contain p-2"
+                  />
+                </div>
+
+                <h3 className="text-base font-semibold text-gray-800">
+                  {product.title}
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">{product.description}</p>
+
+                <div className="flex items-center mt-2 gap-2 text-sm text-gray-500">
+                  <span className="flex items-center gap-1">
+                    {product.rating}
+                    <MdOutlineStarPurple500 className="text-yellow-400" size={14} />
+                  </span>
+                  <span>({product.reviews} reviews)</span>
+                </div>
+
+                <span className="text-xs text-gray-500 mt-1">
+                  Sold: {product.sold}/{product.total}
+                </span>
+
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="text-sm line-through text-gray-400">
+                    ${product.originalPrice}
+                  </span>
+                  <span className="text-lg font-bold text-green-800">
+                    ${product.discountedPrice}
+                  </span>
+                </div>
+
+                <button className="mt-4 cursor-pointer items-center justify-center gap-2 border border-green-600 text-green-500 hover:text-white py-2 rounded-md hover:bg-green-700 transition-all hidden sm:flex">
+                  View Details
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </MaxWidthWrapper>
   );
 };
 
 const SearchBox = () => (
   <Suspense fallback={<div>Loading search...</div>}>
-    <SearchBoxContent />
+    <Search />
   </Suspense>
 );
 

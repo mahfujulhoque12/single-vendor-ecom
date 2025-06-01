@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import shop from "/public/shop/shop.png";
 import ShopInputFilter from "./atom/ShopInputFilter";
@@ -20,6 +20,8 @@ import Rating from "./atom/Rating";
 import MaxWidthWrapper from "@/ui/MaxWidthWrapper";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { CiFilter } from "react-icons/ci";
+import { PiCaretUpDown } from "react-icons/pi";
 
 // Reusable Filter Component
 const ShopFilters = () => {
@@ -116,21 +118,28 @@ const ShopWrapper = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <MaxWidthWrapper>
-      <div className="p-5">
-        <p className="flex items-center gap-2 text-base font-normal text-[#8B96A5] dark:text-gray-300">
+    <MaxWidthWrapper className="px-0">
+      <div className="p-2 sm:p-5">
+        <p className="flex items-center gap-2 text-base font-normal text-gray-700 ">
           Home <MdOutlineKeyboardArrowRight /> Mens{" "}
           <MdOutlineKeyboardArrowRight /> Summer{" "}
         </p>
 
         <div className="flex flex-col lg:flex-row gap-4 mt-5">
           {/* Hamburger Menu for Mobile */}
+          <div className="flex items-center gap-3 justify-between py-2">
+
           <button
-            className="sticky top-0 left-0 z-20 lg:hidden flex items-center gap-2 text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded-md w-fit border shadow-md dark:border-gray-600"
+            className="sticky top-0 left-0 z-20 lg:hidden flex items-center gap-1 text-green-500 text-base font-normal  cursor-pointer   "
             onClick={() => setIsDrawerOpen(true)}
           >
-            <FaBars size={20} /> Filters
+            <CiFilter  size={20} />  filter
           </button>
+          <button className="text-base font-normal text-gray-800 cursor-pointer hover:text-green-500 transition-all duration-300">Top Sell</button>
+          <button className="text-base font-normal text-gray-800 flex items-center gap-1 cursor-pointer hover:text-green-500 transition-all duration-300">Price <PiCaretUpDown /></button>
+          <button className="text-base font-normal text-gray-800 cursor-pointer hover:text-green-500 transition-all duration-300">Discount</button>
+          </div>
+
 
           {/* Filter Sidebar for Desktop (Hidden on Mobile) */}
           <div className="hidden lg:block w-full md:basis-[20%]">
@@ -146,14 +155,15 @@ const ShopWrapper = () => {
           >
             {/* Close Button */}
             <button
-              className="text-gray-700 dark:text-gray-200 text-lg font-semibold mb-4 flex items-center gap-2"
+              className="text-gray-700  text-lg font-semibold mb-4 flex items-center gap-2 cursor-pointer"
               onClick={() => setIsDrawerOpen(false)}
             >
-              <FaTimes size={20} /> Close
+              <FaTimes size={20} /> 
             </button>
 
             {/* Filters (Reused Component) */}
             <ShopFilters />
+            
           </div>
 
           {/* Products Grid */}
