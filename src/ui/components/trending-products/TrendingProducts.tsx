@@ -6,142 +6,14 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { GiHearts } from 'react-icons/gi';
 import { MdOutlineStarPurple500 } from 'react-icons/md';
 
-import image1 from '/public/category/food1.png';
-import image2 from '/public/category/food2.png';
-import image3 from '/public/category/food3.png';
-import image4 from '/public/category/food4.png';
-import image5 from '/public/category/food5.png';
-import image6 from '/public/category/food6.png';
-import image7 from '/public/category/food3.png';
-import image8 from '/public/category/food1.png';
 import MaxWidthWrapper from '@/ui/MaxWidthWrapper';
 import { IoMdArrowDropright } from 'react-icons/io';
 import Link from 'next/link';
+import { trendingProducts } from '@/data/trendingProducts';
 
 
+ 
 
-const products = [
-  {
-    id: 1,
-    title: 'Organic Fruits',
-    img: image1,
-    rating: 4.8,
-    reviews: 12,
-    sold: 60,
-    total: 100,
-    originalPrice: 20,
-    discountedPrice: 15,
-    description: 'Fresh organic fruits full of nutrients.',
-  },
-  {
-    id: 2,
-    title: 'Fresh Vegetables',
-    img: image2,
-    rating: 4.7,
-    reviews: 10,
-    sold: 45,
-    total: 80,
-    originalPrice: 18,
-    discountedPrice: 13,
-    description: 'Locally sourced fresh vegetables.',
-  },
-  {
-    id: 3,
-    title: 'Dairy Products',
-    img: image3,
-    rating: 4.6,
-    reviews: 8,
-    sold: 30,
-    total: 60,
-    originalPrice: 25,
-    discountedPrice: 19,
-    description: 'Organic and hormone-free dairy.',
-  },
-  {
-    id: 4,
-    title: 'Natural Juices',
-    img: image4,
-    rating: 4.9,
-    reviews: 15,
-    sold: 70,
-    total: 90,
-    originalPrice: 22,
-    discountedPrice: 17,
-    description: 'Cold-pressed, preservative-free juices.',
-  },
-  {
-    id: 5,
-    title: 'Herbal Teas',
-    img: image5,
-    rating: 4.5,
-    reviews: 5,
-    sold: 20,
-    total: 50,
-    originalPrice: 12,
-    discountedPrice: 9,
-    description: 'Caffeine-free relaxing herbal teas.',
-  },
-  {
-    id: 6,
-    title: 'Whole Grains',
-    img: image6,
-    rating: 4.4,
-    reviews: 6,
-    sold: 40,
-    total: 70,
-    originalPrice: 14,
-    discountedPrice: 11,
-    description: 'Healthy and filling whole grains.',
-  },
-  {
-    id: 7,
-    title: 'Raw Honey',
-    img: image7,
-    rating: 5.0,
-    reviews: 20,
-    sold: 90,
-    total: 100,
-    originalPrice: 30,
-    discountedPrice: 25,
-    description: 'Pure and unfiltered raw honey.',
-  },
-  {
-    id: 8,
-    title: 'Cold Pressed Oils',
-    img: image8,
-    rating: 4.3,
-    reviews: 7,
-    sold: 25,
-    total: 50,
-    originalPrice: 28,
-    discountedPrice: 22,
-    description: 'Healthy oils extracted without heat.',
-  },
-    {
-    id: 10,
-    title: 'Raw Honey',
-    img: image7,
-    rating: 5.0,
-    reviews: 20,
-    sold: 90,
-    total: 100,
-    originalPrice: 30,
-    discountedPrice: 25,
-    description: 'Pure and unfiltered raw honey.',
-  },
-  {
-    id: 9,
-    title: 'Cold Pressed Oils',
-    img: image8,
-    rating: 4.3,
-    reviews: 7,
-    sold: 25,
-    total: 50,
-    originalPrice: 28,
-    discountedPrice: 22,
-    description: 'Healthy oils extracted without heat.',
-  },
-];
 
 const TrendingProducts = () => {
   return (
@@ -158,8 +30,8 @@ const TrendingProducts = () => {
     </div>
 
       <div className="grid gap-2 sm:gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5">
-        {products.map((product) => (
-          <div
+        {trendingProducts.map((product) => (
+          <Link href={`/trending-product/${product.slug}`}
             key={product.id}
             className="bg-white rounded-md   md:shadow-md p-2 sm:p-4 flex flex-col justify-between md:hover:shadow-lg transition-all"
           >
@@ -209,7 +81,7 @@ const TrendingProducts = () => {
             >
               <FaShoppingCart /> Add to Cart
             </button>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

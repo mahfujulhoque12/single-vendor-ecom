@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
+
 import { GiHouse } from 'react-icons/gi';
 import { GoHeart } from 'react-icons/go';
 import { MdManageAccounts } from 'react-icons/md';
-import { RiShoppingBag4Line } from 'react-icons/ri';
+import { RiListOrdered } from 'react-icons/ri';
 import { TbCategory } from 'react-icons/tb';
 
 const MobileFooter = () => {
@@ -15,7 +16,7 @@ const MobileFooter = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <div className="bg-green-50 p-5 fixed bottom-0 left-0 w-full z-50">
+    <div className="bg-white p-5 fixed bottom-0 left-0 w-full z-50">
       <div className="flex gap-5 items-center justify-between">
         <Link
           href="/"
@@ -37,11 +38,14 @@ const MobileFooter = () => {
           Categories
         </Link>
 
-        <Link
-          href="/cart"
-          className="flex flex-col items-center justify-center text-white bg-green-500 p-3 rounded-full font-semibold text-sm"
+          <Link
+          href="#"
+          className={`flex flex-col items-center justify-center font-semibold text-sm ${
+            isActive('/categories') ? 'text-green-500' : 'text-gray-800 hover:text-green-500'
+          } transition-all duration-200`}
         >
-          <RiShoppingBag4Line size={30} />
+          <RiListOrdered   size={20} />
+          Orders
         </Link>
 
         <Link
