@@ -70,8 +70,8 @@ const Card: React.FC = () => {
   };
 
   return (
-    <MaxWidthWrapper>
-      <div className="flex flex-col gap-2 relative  bg-white mt-3 p-2">
+    <MaxWidthWrapper className="px-0">
+      <div className="flex flex-col mx-auto gap-2 relative max-w-lg  bg-white mt-3 p-2 sm:mb-3">
         <Link href="/" className="absolute top-4 left-4">
           <span className="relative z-10">
             {" "}
