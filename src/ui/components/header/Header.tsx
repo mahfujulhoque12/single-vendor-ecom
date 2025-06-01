@@ -175,8 +175,8 @@ const Header: React.FC = () => {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden`}
       >
-        <div className="p-4 space-y-4 text-green-900 font-medium">
-          <div className="flex justify-between items-center border-b border-gray-300 pb-3">
+        <div className="p-4 space-y-3 text-green-900 font-medium">
+          <div className="flex justify-between items-center">
             <Link href="/" onClick={toggleMobileMenu}>
               <Image
                 src={logo}
@@ -191,10 +191,10 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          <Link href="/" className="block" onClick={toggleMobileMenu}>
+          <Link href="/" className="block text-base font-semibold text-green-500 border-y border-y-gray-300 py-3" onClick={toggleMobileMenu}>
             Home
           </Link>
-          <Link href="/about" className="block" onClick={toggleMobileMenu}>
+          <Link href="/about"  className="block text-base font-semibold text-gray-800 border-b border-b-gray-300 pb-3" onClick={toggleMobileMenu}>
             About
           </Link>
 
@@ -206,22 +206,26 @@ const Header: React.FC = () => {
             }
             className="w-full flex items-center justify-between"
           >
-            <span>Honey</span>
+            <Link href="#" className="block text-base font-semibold text-gray-800">Honey</Link>
             {openDropdown === "honey" ? <FaChevronUp /> : <FaChevronDown />}
           </button>
-          {openDropdown === "honey" && (
-            <div className="ml-4 space-y-1 mt-1">
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+        
+            <div  className={`transition-all duration-500 ease-in-out overflow-hidden bg-[#ebebeb] rounded-sm mt-1 px-3 space-y-1 transform-gpu origin-top ${
+          openDropdown === "honey"
+            ? "max-h-[500px] opacity-100 py-3 scale-y-100"
+            : "max-h-0 opacity-0 py-0 scale-y-0"
+        }`}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold" onClick={toggleMobileMenu}>
                 Cold-Pressed&nbsp;Oils
               </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold py-2" onClick={toggleMobileMenu}>
                 Herbal Tea
               </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold" onClick={toggleMobileMenu}>
                 Dry&nbsp;Fruits
               </Link>
             </div>
-          )}
+          
 
           {/* Superfoods Dropdown */}
           <button
@@ -232,26 +236,30 @@ const Header: React.FC = () => {
             }
             className="w-full flex items-center justify-between"
           >
-            <span>Superfoods</span>
+            <Link href="#" className="block text-base font-semibold text-gray-800">Superfoods</Link>
             {openDropdown === "superfoods" ? (
               <FaChevronUp />
             ) : (
               <FaChevronDown />
             )}
           </button>
-          {openDropdown === "superfoods" && (
-            <div className="ml-4 space-y-1 mt-1">
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+      
+            <div  className={`transition-all duration-500 ease-in-out overflow-hidden bg-[#ebebeb] rounded-sm mt-1 px-3 space-y-1 transform-gpu origin-top ${
+          openDropdown === "superfoods"
+            ? "max-h-[500px] opacity-100 py-3 scale-y-100"
+            : "max-h-0 opacity-0 py-0 scale-y-0"
+        }`}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold" onClick={toggleMobileMenu}>
                 Skincare
               </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold py-2" onClick={toggleMobileMenu}>
                 Spices
               </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
+              <Link href="#" className="block text-gray-700 text-sm font-semibold" onClick={toggleMobileMenu}>
                 Herbal Tea
               </Link>
             </div>
-          )}
+        
 
           {/* Organic Vegetables Dropdown */}
           <button
@@ -260,62 +268,82 @@ const Header: React.FC = () => {
                 openDropdown === "vegetables" ? null : "vegetables"
               )
             }
-            className="w-full flex items-center justify-between"
+             className="w-full flex items-center justify-between    transition-colors duration-300"
           >
-            <span>Organic Vegetables</span>
+            <Link href="#" className="block text-base font-semibold text-gray-800 ">Organic Vegetables</Link>
             {openDropdown === "vegetables" ? (
               <FaChevronUp />
             ) : (
               <FaChevronDown />
             )}
           </button>
-          {openDropdown === "vegetables" && (
-            <div className="ml-4 space-y-1 mt-1">
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
-                Dry&nbsp;Fruits
-              </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
-                Whole&nbsp;Grains
-              </Link>
-              <Link href="#" className="block" onClick={toggleMobileMenu}>
-                Organic&nbsp;Flours
-              </Link>
-            </div>
-          )}
 
+      <div
+        className={`transition-all duration-500 ease-in-out overflow-hidden bg-[#ebebeb] rounded-sm mt-1 px-3 space-y-1 transform-gpu origin-top ${
+          openDropdown === "vegetables"
+            ? "max-h-[500px] opacity-100 py-3 scale-y-100"
+            : "max-h-0 opacity-0 py-0 scale-y-0"
+        }`}
+      >
+        <Link
+          href="#"
+          className="block text-gray-700 text-sm font-semibold py-1 hover:text-gray-900 transition-colors duration-200"
+          onClick={toggleMobileMenu}
+        >
+          Dry Fruits
+        </Link>
+        <Link
+          href="#"
+          className="block text-gray-700 text-sm font-semibold py-1 hover:text-gray-900 transition-colors duration-200"
+          onClick={toggleMobileMenu}
+        >
+          Whole Grains
+        </Link>
+        <Link
+          href="#"
+          className="block text-gray-700 text-sm font-semibold py-1 hover:text-gray-900 transition-colors duration-200"
+          onClick={toggleMobileMenu}
+        >
+          Organic Flours
+        </Link>
+      </div>
+
+
+
+          
           {/* Mobile Dropdown  end*/}
 
           <Link
             href="/products/grains"
-            className="block"
+            className="block border-y border-y-gray-300 py-3 text-gray-800 font-semibold text-base"
             onClick={toggleMobileMenu}
           >
             Whole&nbsp;Grains
           </Link>
           <Link
             href="/products/flours"
-            className="block"
+            className="block border-b border-b-gray-300 pb-3 text-gray-800 font-semibold text-base"
             onClick={toggleMobileMenu}
           >
             Organic&nbsp;Flours
           </Link>
           <Link
             href="/products/snacks"
-            className="block"
+            className="block border-b border-b-gray-300 pb-3 text-gray-800 font-semibold text-base"
             onClick={toggleMobileMenu}
           >
             Healthy&nbsp;Snacks
           </Link>
           <Link
             href="/products/beverages"
-            className="block"
+            className="block border-b border-b-gray-300 pb-3 text-gray-800 font-semibold text-base"
             onClick={toggleMobileMenu}
           >
             Organic&nbsp;Beverages
           </Link>
           <Link
             href="/products/dairy"
-            className="block"
+            className="block border-b border-b-gray-300 pb-3 text-gray-800 font-semibold text-base"
             onClick={toggleMobileMenu}
           >
             Organic&nbsp;Dairy

@@ -32,14 +32,14 @@ const Categories: React.FC = () => {
   return (
     <MaxWidthWrapper className='px-1'>
 
-    <div className='flex gap-2 items-start mt-4 sm:hidden'>
+    <div className='flex gap-2 items-start mt-1 sm:hidden'>
       {/* Left side buttons */}
       <div className='basis-[30%] h-[80vh] overflow-y-auto'>
         <div className='flex flex-col gap-0'>
           {tabData.map((tab) => (
             <button
               key={tab.id}
-              className={`py-2 px-1 text-center   cursor-pointer text-sm ${
+              className={`py-4 px-1 text-center   cursor-pointer text-sm ${
                 activeTab === tab.id
                   ? 'bg-white text-gray-800'
                   : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
