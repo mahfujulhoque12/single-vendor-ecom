@@ -224,7 +224,7 @@ const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
 
         <button
           type="submit"
-          className="relative overflow-hidden text-xl font-semibold text-white bg-green-500 px-3 py-2 rounded-md w-full block text-center group mb-20"
+          className="relative overflow-hidden text-xl font-semibold text-white bg-green-500 px-3 py-2 rounded-md w-full sm:w-[170px] block text-center group mb-20 cursor-pointer"
         >
           <span className="relative z-10">Order Now</span>
           <span className="absolute top-0 left-0 w-full h-full bg-white opacity-10 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
