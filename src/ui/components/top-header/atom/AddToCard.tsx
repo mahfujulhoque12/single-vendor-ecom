@@ -13,14 +13,14 @@ const staticCartItems = [
     name: "Honey Jar",
     quantity: 2,
     price: 10,
-    image: "/product/product1.png",
+    image: "/category/food1.png",
   },
   {
     id: 2,
     name: "Organic Dates",
     quantity: 1,
     price: 15,
-    image: "/product/product2.png",
+    image: "/category/food2.png",
   },
 ];
 
@@ -52,7 +52,7 @@ const AddToCart: React.FC = () => {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/60 z-50 transition-opacity duration-300 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={toggleDrawer}
