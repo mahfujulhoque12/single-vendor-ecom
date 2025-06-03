@@ -59,7 +59,8 @@ const MobileFooter = () => {
         </Link>
 
         <Link
-          href="/profile"
+          href="/account
+          "
           className={`flex flex-col items-center justify-center font-semibold text-sm ${
             isActive('/profile') ? 'text-green-500' : 'text-gray-800 hover:text-green-500'
           } transition-all duration-200`}
